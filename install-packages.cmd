@@ -1,6 +1,6 @@
 @echo off
 
-echo "Clean up the environment ..."
+echo "Cleanup the environment....."
 IF EXIST "Src\external_dependencies\vcpkg" (
 	echo Deleting "Src\external_dependencies\vcpkg" ...
 	rmdir /S /Q "Src\external_dependencies\vcpkg"
@@ -20,22 +20,22 @@ IF EXIST ".\vcpkg" (
 )
 
 if "%computername%"=="NullsoftBuildbox" (
-echo "Uncompress the Qt Debug dlls ..."
+echo "Uncompress the Qt Debug dlls..."
 .\BuildTools\7-ZipPortable_22.01\App\7-Zip\7z.exe x .\Qt\DLL_5.12_x86\Debug_Commercial.7z.001 -y -o.\Qt\DLL_5.12_x86
 ren ".\Qt\DLL_5.12_x86\Debug_Commercial\" ".\Qt\DLL_5.12_x86\Debug"
 
-echo "Uncompress the Qt Release dlls ..."
+echo "Uncompress the Qt Release dlls..."
 .\BuildTools\7-ZipPortable_22.01\App\7-Zip\7z.exe x .\Qt\DLL_5.12_x86\Release_Commercial.7z.001 -y -o.\Qt\DLL_5.12_x86
 ren ".\Qt\DLL_5.12_x86\Release_Commercial\" ".\Qt\DLL_5.12_x86\Release\"
 ) ELSE (
-echo "Uncompress the Qt Debug dlls ..."
+echo "Uncompress the Qt Debug dlls..."
 .\BuildTools\7-ZipPortable_22.01\App\7-Zip\7z.exe x .\Qt\DLL_5.12_x86\Debug.7z.001 -y -o.\Qt\DLL_5.12_x86
 
-echo "Uncompress the Qt Release dlls ..."
+echo "Uncompress the Qt Release dlls..."
 .\BuildTools\7-ZipPortable_22.01\App\7-Zip\7z.exe x .\Qt\DLL_5.12_x86\Release.7z.001 -y -o.\Qt\DLL_5.12_x86
 )
 
-echo "Uncompress \Src\external_dependencies\CEF ..."
+echo "Uncompress \Src\external_dependencies\CEF..."
 .\BuildTools\7-ZipPortable_22.01\App\7-Zip\7z.exe x .\Src\external_dependencies\CEF.7z.001 -y -o.\Src\external_dependencies
 
 
@@ -49,7 +49,7 @@ IF NOT EXIST .\vcpkg (
 	echo Patching ports...
 	xcopy /K /Y /H /C /I /E .\vcpkg-ports\* .\vcpkg\ports\*
 
-	echo Installing packages...
+	echo Installing packages....
 	cd .\vcpkg
 	.\vcpkg install alac:x86-windows-static-md
 	.\vcpkg install expat:x86-windows-static-md expat:x86-windows-static
